@@ -1,0 +1,3 @@
+rootProject.name = 'spring-boot-reactive'
+include 'spring-boot-reactive-mongo'
+
