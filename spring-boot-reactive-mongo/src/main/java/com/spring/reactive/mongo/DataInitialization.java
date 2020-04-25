@@ -2,12 +2,10 @@ package com.spring.reactive.mongo;
 
 import com.spring.reactive.mongo.model.Customer;
 import com.spring.reactive.mongo.repository.CustomerRepository;
-
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 
 @Component
@@ -18,7 +16,7 @@ public class DataInitialization implements CommandLineRunner {
 	private CustomerRepository repository;
 
 	@Override
-	public void run(String... args) throws Exception {
+	public void run(String... args) {
 		log.info("starting data init...");
 
 		Customer donald = Customer.builder()
@@ -37,7 +35,5 @@ public class DataInitialization implements CommandLineRunner {
 		() -> log.info("Finished data init..."));
 
 		repository.count().subscribe(c -> log.info("Inserted " + c + " customers!"));
-
-
 	}
 }
